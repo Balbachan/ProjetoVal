@@ -6,12 +6,21 @@
 //
 
 import SwiftUI
+import SwiftData
+import Firebase
 
 @main
 struct ProjetoValApp: App {
+    
+    init() {
+        FirebaseApp.configure()
+    }
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ActivitiesView()
         }
+        .modelContainer(for: DataItem.self)
     }
 }
+
