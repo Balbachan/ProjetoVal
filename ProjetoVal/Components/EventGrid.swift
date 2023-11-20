@@ -22,7 +22,6 @@ struct EventGrid: View {
                 let shows = model.event.filter { $0.type == "show" }
                 let sports = model.event.filter { $0.type == "sports" }
                 let clubs = model.event.filter { $0.type == "club" }
-                let various = model.event.filter { $0.type == "various" }
                 
                 // Mostrar eventos de cada categoria lado a lado
                 Grid {
@@ -74,21 +73,6 @@ struct EventGrid: View {
                     }
                     .padding(.vertical, 10)
                     
-                    VStack(alignment: .leading) {
-                        Text("Various")
-                            .bold()
-                            .padding(.horizontal, 20)
-                        ScrollView(.horizontal) {
-                            GridRow {
-                                HStack {
-                                    displayEvents(events: various)
-                                        .padding(.leading, 20)
-                                }
-                            }
-                        }
-                        .scrollIndicators(.hidden)
-                    }
-                    .padding(.vertical, 10)
                 }
             }
             .padding(.vertical, 30)
