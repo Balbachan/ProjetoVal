@@ -43,8 +43,8 @@
 		193E30E42B0AAFE400507856 /* SavedEventCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 193E30E32B0AAFE400507856 /* SavedEventCard.swift */; };
 		193E30E72B0AB32100507856 /* DataItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 193E30E62B0AB32100507856 /* DataItem.swift */; };
 		193E30E92B0AE7CF00507856 /* EventsDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 193E30E82B0AE7CF00507856 /* EventsDetailsView.swift */; };
+		193E30ED2B0BA4BD00507856 /* EventGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 193E30EC2B0BA4BD00507856 /* EventGrid.swift */; };
 		195D28D02AFBC465005F0EFA /* ProjetoValApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195D28CF2AFBC465005F0EFA /* ProjetoValApp.swift */; };
-		195D28D22AFBC465005F0EFA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195D28D12AFBC465005F0EFA /* ContentView.swift */; };
 		195D28D42AFBC466005F0EFA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 195D28D32AFBC466005F0EFA /* Assets.xcassets */; };
 		195D28D72AFBC466005F0EFA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 195D28D62AFBC466005F0EFA /* Preview Assets.xcassets */; };
 		196190F92B0650600047DAB4 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 196190F82B0650600047DAB4 /* FirebaseAnalytics */; };
@@ -66,9 +66,9 @@
 		193E30E32B0AAFE400507856 /* SavedEventCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedEventCard.swift; sourceTree = "<group>"; };
 		193E30E62B0AB32100507856 /* DataItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataItem.swift; sourceTree = "<group>"; };
 		193E30E82B0AE7CF00507856 /* EventsDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsDetailsView.swift; sourceTree = "<group>"; };
+		193E30EC2B0BA4BD00507856 /* EventGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventGrid.swift; sourceTree = "<group>"; };
 		195D28CC2AFBC465005F0EFA /* ProjetoVal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProjetoVal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		195D28CF2AFBC465005F0EFA /* ProjetoValApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjetoValApp.swift; sourceTree = "<group>"; };
-		195D28D12AFBC465005F0EFA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		195D28D32AFBC466005F0EFA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		195D28D62AFBC466005F0EFA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		1981D1862B01A624005E8AAA /* EventCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCard.swift; sourceTree = "<group>"; };
@@ -170,7 +170,6 @@
 		196191032B076EC80047DAB4 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				195D28D12AFBC465005F0EFA /* ContentView.swift */,
 				193E309F2B0A862700507856 /* ActivitiesView.swift */,
 				193E30E82B0AE7CF00507856 /* EventsDetailsView.swift */,
 				193E30A12B0A8B9D00507856 /* SavedEventsView.swift */,
@@ -200,6 +199,7 @@
 				1981D1862B01A624005E8AAA /* EventCard.swift */,
 				193E30E32B0AAFE400507856 /* SavedEventCard.swift */,
 				193E309D2B0A727D00507856 /* SaveButton.swift */,
+				193E30EC2B0BA4BD00507856 /* EventGrid.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -321,12 +321,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				193E30E92B0AE7CF00507856 /* EventsDetailsView.swift in Sources */,
-				195D28D22AFBC465005F0EFA /* ContentView.swift in Sources */,
 				193E30A22B0A8B9D00507856 /* SavedEventsView.swift in Sources */,
 				193E30A82B0A940300507856 /* EventsModel.swift in Sources */,
 				193E309E2B0A727D00507856 /* SaveButton.swift in Sources */,
 				1981D18F2B01ACB3005E8AAA /* AlgumEnum.swift in Sources */,
 				193E30A02B0A862700507856 /* ActivitiesView.swift in Sources */,
+				193E30ED2B0BA4BD00507856 /* EventGrid.swift in Sources */,
 				193E30E42B0AAFE400507856 /* SavedEventCard.swift in Sources */,
 				193E30E72B0AB32100507856 /* DataItem.swift in Sources */,
 				193E30AA2B0A940C00507856 /* EventsViewModel.swift in Sources */,

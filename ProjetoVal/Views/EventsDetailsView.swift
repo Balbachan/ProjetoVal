@@ -9,6 +9,7 @@ import SwiftUI
 
 struct EventsDetailsView: View {
     @Binding var isSaved: Bool
+    @Binding var savedItems: [EventCard]
     @State var descAbout: String
     @State var descAddress: String
     @State var descAudience: String
@@ -22,60 +23,84 @@ struct EventsDetailsView: View {
     var body: some View {
         ScrollView(.vertical) {
             VStack(alignment: .leading) {
-                Image("\(descImage)")
-                    .resizable()
-                    .scaledToFill()
-                    .frame(width: 393, height: 262)
+                VStack {
+                    Image("\(descImage)")
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 200, height: 150)
+                        
+                }
+                .frame(width: 393, height: 262)
+                .background(.superLightOrange)
                 
-                HStack {
+                                
+                HStack(alignment: .center) {
                     Text("\(descTitle)")
                         .font(.title)
                         .bold()
+                        .padding(.horizontal, 10)
                     
                     Spacer()
                     
                     Button("") {
-                        print("aa")
+                        if !isSaved {
+                            // Se o evento não estiver salvo, adicione-o à lista de salvos
+                            let event = EventCard(isSaved: true, cardAbout: descAbout, cardAddress: descAddress, cardAudience: descAudience, cardDate: descDate, cardImage: descImage, cardLanguage: descLanguage, cardClose: descClose, cardOpen: descOpen, cardTitle: descTitle)
+                            savedItems.append(event)
+                            isSaved.toggle()
+                        } else {
+                            // Se já estiver salvo, remova-o da lista de salvos (opcional)
+                            if let index = savedItems.firstIndex(where: { $0.cardTitle == descTitle }) {
+                                savedItems.remove(at: index)
+                                isSaved.toggle()
+                            }
+                        }
                     }
-                    .buttonStyle(SaveButton(isSaved: $isSaved, isOrange: true))
+                    .buttonStyle(SaveButton(isSaved: $isSaved))
+                    .padding()
                 }
                 
-                HStack {
+                HStack(alignment: .center) {
                     VStack(alignment: .leading, spacing: 10) {
                         Image(systemName: "mappin")
+                            .foregroundStyle(.darkOrange)
                             .padding(5)
                             .background(.superLightOrange)
                             .clipShape(Circle())
                         
                         Image(systemName: "calendar")
+                            .foregroundStyle(.darkOrange)
                             .padding(5)
                             .background(.superLightOrange)
                             .clipShape(Circle())
                         
                         Image(systemName: "clock")
+                            .foregroundStyle(.darkOrange)
                             .padding(5)
                             .background(.superLightOrange)
                             .clipShape(Circle())
                         
                         Image(systemName: "t.bubble")
+                            .foregroundStyle(.darkOrange)
                             .padding(5)
                             .background(.superLightOrange)
                             .clipShape(Circle())
                         
                         Image(systemName: "person")
+                            .foregroundStyle(.darkOrange)
                             .padding(5)
                             .background(.superLightOrange)
                             .clipShape(Circle())
                     }
                     
-                    VStack(alignment: .leading, spacing: 18) {
+                    VStack(alignment: .leading, spacing: 20) {
                         Text("\(descAddress)")
                             .font(.callout)
                         
                         Text("\(descDate)")
                             .font(.callout)
                         
-                        Text("\(descOpen) + \(descClose)")
+                        Text("\(descOpen) - \(descClose)")
                             .font(.callout)
                         
                         Text("\(descLanguage)")
@@ -86,11 +111,16 @@ struct EventsDetailsView: View {
                     }
                     
                 }
+                .padding(.horizontal, 10)
                 
-                Text("About")
-                    .font(.title3)
-                    .bold()
-                Text("\(descAbout)")
+                VStack(alignment: .leading, spacing: 5) {
+                    Text("About")
+                        .font(.title3)
+                        .bold()
+                    Text("\(descAbout)")
+                }
+                .padding(.horizontal, 10)
+                .padding(.vertical, 10)
                 
             }
         }
@@ -98,6 +128,6 @@ struct EventsDetailsView: View {
 }
 
 
-#Preview {
-    EventsDetailsView(isSaved: .constant(true), descAbout: "Lorem ipsum dolor sit amet consectetur. Tortor tristique est ullamcorper penatibus nulla. Euismod suspendisse ut nisl in ut interdum. Non quis erat convallis a montes auctor proin. Dui et netus in pretium.", descAddress: "Endereço Maneiro", descAudience: "General Public", descDate: "10/01/2024", descImage: "fashionshow", descLanguage: "Portuguese", descClose: "10 PM", descOpen: "10 AM", descTitle: "Super Fashion Show")
-}
+//#Preview {
+//    EventsDetailsView(isSaved: .constant(true), savedItems: [], descAbout: "Lorem ipsum dolor sit amet consectetur. Tortor tristique est ullamcorper penatibus nulla. Euismod suspendisse ut nisl in ut interdum. Non quis erat convallis a montes auctor proin. Dui et netus in pretium.", descAddress: "Endereço Maneiro", descAudience: "General Public", descDate: "10/01/2024", descImage: "book", descLanguage: "Portuguese", descClose: "10 PM", descOpen: "10 AM", descTitle: "Super Fashion Show")
+//}

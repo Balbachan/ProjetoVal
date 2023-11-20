@@ -9,18 +9,17 @@ import SwiftUI
 
 struct SaveButton: ButtonStyle {
     @Binding var isSaved: Bool
-    @State var isOrange: Bool
     
     func makeBody(configuration: Configuration) -> some View {
         let buttonLabel = Image(systemName: isSaved ? "bookmark.fill" : "bookmark")
-            .foregroundStyle(isOrange ? .darkOrange : .darkBlue)
+            .foregroundStyle(.darkOrange)
             .padding(8)
             .clipShape(Circle())
         
         return buttonLabel
             .background(
                 Circle()
-                    .fill(isOrange ? .superLightOrange : .superLightBlue)
+                    .fill(.superLightOrange)
             )
             .scaleEffect(configuration.isPressed ? 0.80 : 1.0)
             .animation(.easeInOut(duration: 0.2))
@@ -34,5 +33,5 @@ struct SaveButton: ButtonStyle {
     Button("aaa") {
         print("aa")
     }
-    .buttonStyle(SaveButton(isSaved: .constant(true), isOrange: true))
+    .buttonStyle(SaveButton(isSaved: .constant(true)))
 }

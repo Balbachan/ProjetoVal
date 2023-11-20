@@ -10,9 +10,9 @@ import FirebaseFirestore
 
 class ViewModel: ObservableObject {
     @Published var event = [Event]()
+    var allEvents = [Event]()
     
     func getData() {
-        
         let db = Firestore.firestore()
         db.collection("Events").getDocuments { snapshot, error in
             
@@ -30,7 +30,7 @@ class ViewModel: ObservableObject {
                                      time_close: document["time_close"] as? String ?? "",
                                      time_open: document["time_open"] as? String ?? "",
                                      title: document["title"] as? String ?? "",
-                                     type: document["type"] as? String ?? "")
+                                     type: document["type"] as? String ?? "various")
                     }
                 }
             } else {

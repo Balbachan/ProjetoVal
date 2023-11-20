@@ -8,18 +8,19 @@
 import SwiftUI
 
 struct SavedEventsView: View {
-    @State var isSaved: Bool
+    @Binding var savedEvents: [EventCard]
+    
     var body: some View {
-        NavigationStack {
-            ScrollView(.vertical) {
-                
+        ScrollView {
+            LazyVStack(spacing: 20) {
+                ForEach(savedEvents) { item in
+                    
+                }
             }
-            .navigationBarTitleDisplayMode(.inline)
-            .navigationTitle("Salvos")
+            .padding()
         }
+        .navigationTitle("Saved")
     }
 }
 
-#Preview {
-    SavedEventsView(isSaved: true)
-}
+
