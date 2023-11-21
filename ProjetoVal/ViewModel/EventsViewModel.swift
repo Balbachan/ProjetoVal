@@ -22,7 +22,7 @@ class ViewModel: ObservableObject {
                     self.event = snapshot.documents.map { document in
                         return Event(id: document.documentID,
                                      about: document["about"] as? String ?? "",
-                                     address: document["addres"] as? String ?? "",
+                                     address: document["address"] as? String ?? "",
                                      audience: document["audience"] as? String ?? "",
                                      date: document["date"] as? String ?? "",
                                      image: document["image"] as? String ?? "",

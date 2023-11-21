@@ -40,7 +40,7 @@ struct ActivitiesView: View {
                 .frame(maxWidth: .infinity) // Para o ScrollView funcionar na tela toda
             }
             .navigationTitle("Activities")
-            .searchable(text: $searchTerm)
+//            .searchable(text: $searchTerm)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     NavigationLink(destination: SavedEventsView(context: context)) {
