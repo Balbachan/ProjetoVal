@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CoreData
 import Firebase
 
 struct ActivitiesView: View {
@@ -13,7 +14,16 @@ struct ActivitiesView: View {
     @State private var searchTerm = ""
     @State var savedEvents: [EventCard] = []
     
-    init() {
+    
+    //Coisas do CoreData
+    @Environment(\.managedObjectContext) var context //Contexto da minha DataController
+    
+    @ObservedObject var myDataController: MyDataController //Aqui vou receber aquela minha primeira instância, para acessar minhas funções
+    
+    @FetchRequest(sortDescriptors: []) var coreData: FetchedResults<Saved> //Aqui eu recebo no vetor coreData todos os itens que o usuário tem em seu dispositivo da entidade Saved da minha Model
+    
+    init(context: NSManagedObjectContext) {
+        self.myDataController = MyDataController(context: context)
         model.getData()
     }
     
@@ -24,7 +34,7 @@ struct ActivitiesView: View {
 
                     Divider()
                     
-                    EventGrid()
+                    EventGrid(context: context)
                     
                 }
                 .frame(maxWidth: .infinity) // Para o ScrollView funcionar na tela toda
@@ -33,7 +43,7 @@ struct ActivitiesView: View {
             .searchable(text: $searchTerm)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    NavigationLink(destination: SavedEventsView()) {
+                    NavigationLink(destination: SavedEventsView(context: context)) {
                         Image(systemName: "bookmark")
                     }
                     .tint(.projectBlack)
@@ -45,5 +55,5 @@ struct ActivitiesView: View {
 
 
 #Preview {
-    ActivitiesView()
+    ActivitiesView(context: DataController().container.viewContext) //Aqui para o Preview não crashar eu preciso passar um contexto por parâmetro, então eu instancio outra DataController() e chamo container dela
 }

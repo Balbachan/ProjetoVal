@@ -54,6 +54,9 @@
 		196191012B0650600047DAB4 /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = 196191002B0650600047DAB4 /* FirebaseAppCheck */; };
 		1981D1872B01A624005E8AAA /* EventCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1981D1862B01A624005E8AAA /* EventCard.swift */; };
 		1981D18F2B01ACB3005E8AAA /* AlgumEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1981D18E2B01ACB3005E8AAA /* AlgumEnum.swift */; };
+		3B2715072B0C187400F9636A /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3B2715052B0C187400F9636A /* Model.xcdatamodeld */; };
+		3B27150A2B0C18B200F9636A /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B2715092B0C18B200F9636A /* DataController.swift */; };
+		3B27150C2B0C18D500F9636A /* MyDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B27150B2B0C18D500F9636A /* MyDataController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -73,6 +76,9 @@
 		195D28D62AFBC466005F0EFA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		1981D1862B01A624005E8AAA /* EventCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCard.swift; sourceTree = "<group>"; };
 		1981D18E2B01ACB3005E8AAA /* AlgumEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlgumEnum.swift; sourceTree = "<group>"; };
+		3B2715062B0C187400F9636A /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		3B2715092B0C18B200F9636A /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
+		3B27150B2B0C18D500F9636A /* MyDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDataController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +135,7 @@
 		195D28C32AFBC465005F0EFA = {
 			isa = PBXGroup;
 			children = (
+				3B2715052B0C187400F9636A /* Model.xcdatamodeld */,
 				195D28CE2AFBC465005F0EFA /* ProjetoVal */,
 				195D28CD2AFBC465005F0EFA /* Products */,
 			);
@@ -148,6 +155,7 @@
 				193E30AB2B0A99A600507856 /* GoogleService-Info.plist */,
 				195D28CF2AFBC465005F0EFA /* ProjetoValApp.swift */,
 				193E30E52B0AB30900507856 /* Data */,
+				3B2715082B0C18A400F9636A /* Controller */,
 				1981D1882B01A771005E8AAA /* Enum */,
 				1981D1852B01A5F7005E8AAA /* Components */,
 				196191032B076EC80047DAB4 /* Views */,
@@ -210,6 +218,15 @@
 				1981D18E2B01ACB3005E8AAA /* AlgumEnum.swift */,
 			);
 			path = Enum;
+			sourceTree = "<group>";
+		};
+		3B2715082B0C18A400F9636A /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				3B2715092B0C18B200F9636A /* DataController.swift */,
+				3B27150B2B0C18D500F9636A /* MyDataController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -327,10 +344,13 @@
 				1981D18F2B01ACB3005E8AAA /* AlgumEnum.swift in Sources */,
 				193E30A02B0A862700507856 /* ActivitiesView.swift in Sources */,
 				193E30ED2B0BA4BD00507856 /* EventGrid.swift in Sources */,
+				3B27150A2B0C18B200F9636A /* DataController.swift in Sources */,
+				3B27150C2B0C18D500F9636A /* MyDataController.swift in Sources */,
 				193E30E42B0AAFE400507856 /* SavedEventCard.swift in Sources */,
 				193E30E72B0AB32100507856 /* DataItem.swift in Sources */,
 				193E30AA2B0A940C00507856 /* EventsViewModel.swift in Sources */,
 				1981D1872B01A624005E8AAA /* EventCard.swift in Sources */,
+				3B2715072B0C187400F9636A /* Model.xcdatamodeld in Sources */,
 				195D28D02AFBC465005F0EFA /* ProjetoValApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -465,7 +485,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ProjetoVal/Preview Content\"";
-				DEVELOPMENT_TEAM = 8LW8TUQS66;
+				DEVELOPMENT_TEAM = 6S6995TY46;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -478,7 +498,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = laura.projects.ProjetoVal;
+				PRODUCT_BUNDLE_IDENTIFIER = gabriel.projects.ProjetoVal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -494,7 +514,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ProjetoVal/Preview Content\"";
-				DEVELOPMENT_TEAM = 8LW8TUQS66;
+				DEVELOPMENT_TEAM = 6S6995TY46;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -507,7 +527,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = laura.projects.ProjetoVal;
+				PRODUCT_BUNDLE_IDENTIFIER = gabriel.projects.ProjetoVal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -711,6 +731,19 @@
 			productName = FirebaseAppCheck;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		3B2715052B0C187400F9636A /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				3B2715062B0C187400F9636A /* Model.xcdatamodel */,
+			);
+			currentVersion = 3B2715062B0C187400F9636A /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 195D28C42AFBC465005F0EFA /* Project object */;
 }
