@@ -23,9 +23,10 @@ struct SaveButton: ButtonStyle {
             )
             .scaleEffect(configuration.isPressed ? 0.80 : 1.0)
             .animation(.easeInOut(duration: 0.2))
-            .onTapGesture {
-                isSaved.toggle()
-            }
+//            .onTapGesture {
+//                isSaved.toggle()
+//            }
+        //Um botão nao pode ter uma label com onTapGesture, pois se não ele substitui a ação do botão e o botão não funciona.
     }
 }
 

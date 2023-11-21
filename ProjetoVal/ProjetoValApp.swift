@@ -12,13 +12,16 @@ import Firebase
 @main
 struct ProjetoValApp: App {
     
+    @StateObject var dataController = DataController() //Aqui eu preciso adicionar a primeira instância do meu dataController, para ter acesso as minhas funções
+    
     init() {
         FirebaseApp.configure()
     }
     
     var body: some Scene {
         WindowGroup {
-            ActivitiesView()
+            ActivitiesView(context: dataController.container.viewContext)
+                .environment(\.managedObjectContext, dataController.container.viewContext)
         }
         .modelContainer(for: DataItem.self)
     }

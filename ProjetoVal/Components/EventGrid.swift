@@ -6,12 +6,21 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct EventGrid: View {
     @ObservedObject var model = ViewModel()
     @State var eventList: [EventCard] = []
     
-    init() {
+    //Coisas do CoreData
+    @Environment(\.managedObjectContext) var context //Contexto da minha DataController
+    
+    @ObservedObject var myDataController: MyDataController //Aqui vou receber aquela minha primeira instância, para acessar minhas funções
+    
+    @FetchRequest(sortDescriptors: []) var coreData: FetchedResults<Saved> //Aqui eu recebo no vetor coreData todos os itens que o usuário tem em seu dispositivo da entidade Saved da minha Model
+    
+    init(context: NSManagedObjectContext) {
+        self.myDataController = MyDataController(context: context)
         model.getData()
     }
     
@@ -32,7 +41,7 @@ struct EventGrid: View {
                         ScrollView(.horizontal) {
                             GridRow {
                                 HStack {
-                                    displayEvents(events: shows)
+                                    displayEvents(events: shows, context: context)
                                         .padding(.leading, 20)
                                 }
                             }
@@ -48,7 +57,7 @@ struct EventGrid: View {
                         ScrollView(.horizontal) {
                             GridRow {
                                 HStack {
-                                    displayEvents(events: sports)
+                                    displayEvents(events: sports, context: context)
                                         .padding(.leading, 20)
                                 }
                             }
@@ -64,7 +73,7 @@ struct EventGrid: View {
                         ScrollView(.horizontal) {
                             GridRow {
                                 HStack {
-                                    displayEvents(events: clubs)
+                                    displayEvents(events: clubs, context: context)
                                         .padding(.leading, 20)
                                 }
                             }
@@ -81,9 +90,10 @@ struct EventGrid: View {
 }
 
 // Crie uma função para exibir os eventos de cada categoria
-func displayEvents(events: [Event]) -> some View {
+func displayEvents(events: [Event], context: NSManagedObjectContext) -> some View {
     ForEach(events, id: \.id) { item in
         EventCard(
+            eventId: item.id, //Tive que adicionar passar o id
             cardAbout: item.about,
             cardAddress: item.address,
             cardAudience: item.audience,
@@ -92,12 +102,13 @@ func displayEvents(events: [Event]) -> some View {
             cardLanguage: item.language,
             cardClose: item.time_close,
             cardOpen: item.time_open,
-            cardTitle: item.title
+            cardTitle: item.title,
+            context: context
         )
     }
 }
 
 
 #Preview {
-    EventGrid()
+    EventGrid(context: DataController().container.viewContext)
 }

@@ -6,19 +6,44 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct EventsDetailsView: View {
     @Binding var isSaved: Bool
     @Binding var savedItems: [EventCard]
-    @State var descAbout: String
-    @State var descAddress: String
-    @State var descAudience: String
-    @State var descDate: String
-    @State var descImage: String
-    @State var descLanguage: String
-    @State var descClose: String
-    @State var descOpen: String
-    @State var descTitle: String
+    var eventId: String
+    var descAbout: String
+    var descAddress: String
+    var descAudience: String
+    var descDate: String
+    var descImage: String
+    var descLanguage: String
+    var descClose: String
+    var descOpen: String
+    var descTitle: String
+    
+    //Coisas do CoreData
+    @Environment(\.managedObjectContext) var context //Contexto da minha DataController
+    
+    @ObservedObject var myDataController: MyDataController //Aqui vou receber aquela minha primeira instância, para acessar minhas funções
+    
+    @FetchRequest(sortDescriptors: []) var coreData: FetchedResults<Saved> //Aqui eu recebo no vetor coreData todos os itens que o usuário tem em seu dispositivo da entidade Saved da minha Model
+    
+    init(isSaved: Binding<Bool>, savedItems: Binding<[EventCard]>, eventId: String, descAbout: String, descAddress: String, descAudience: String, descDate: String, descImage: String, descLanguage: String, descClose: String, descOpen: String, descTitle: String, context: NSManagedObjectContext) {
+        self._isSaved = isSaved
+        self._savedItems = savedItems
+        self.eventId = eventId
+        self.descAbout = descAbout
+        self.descAddress = descAddress
+        self.descAudience = descAudience
+        self.descDate = descDate
+        self.descImage = descImage
+        self.descLanguage = descLanguage
+        self.descClose = descClose
+        self.descOpen = descOpen
+        self.descTitle = descTitle
+        self.myDataController = MyDataController(context: context)
+    }
     
     var body: some View {
         ScrollView(.vertical) {
@@ -28,12 +53,12 @@ struct EventsDetailsView: View {
                         .resizable()
                         .scaledToFill()
                         .frame(width: 200, height: 150)
-                        
+                    
                 }
                 .frame(width: 393, height: 262)
                 .background(.superLightOrange)
                 
-                                
+                
                 HStack(alignment: .center) {
                     Text("\(descTitle)")
                         .font(.title)
@@ -42,20 +67,34 @@ struct EventsDetailsView: View {
                     
                     Spacer()
                     
-                    Button("") {
-                        if !isSaved {
+                    // Botão de Salvar
+                    Button(action: {
+                        print("Botão pressionado!")
+                        if !myDataController.isEventSaved(eventId: eventId) {
                             // Se o evento não estiver salvo, adicione-o à lista de salvos
-                            let event = EventCard(isSaved: true, cardAbout: descAbout, cardAddress: descAddress, cardAudience: descAudience, cardDate: descDate, cardImage: descImage, cardLanguage: descLanguage, cardClose: descClose, cardOpen: descOpen, cardTitle: descTitle)
-                            savedItems.append(event)
+                            
+                            //                            let event = EventCard(isSaved: true, cardAbout: cardAbout, cardAddress: cardAddress, cardAudience: cardAudience, cardDate: cardDate, cardImage: cardImage, cardLanguage: cardLanguage, cardClose: cardClose, cardOpen: cardOpen, cardTitle: cardTitle, context: context)
+                            //                            savedItems.append(event)
+                                                        
+                            
+                            myDataController.saveEvent(eventId: eventId) //Aqui eu salvo o evento no coreData com seu id
+                            print("Salvei legal aqui o evento no CoreData")
                             isSaved.toggle()
+                            
                         } else {
-                            // Se já estiver salvo, remova-o da lista de salvos (opcional)
-                            if let index = savedItems.firstIndex(where: { $0.cardTitle == descTitle }) {
-                                savedItems.remove(at: index)
-                                isSaved.toggle()
-                            }
+                            // Se já estiver salvo, remove da lista de salvos
+                            //                            if let index = savedItems.firstIndex(where: { $0.cardTitle == cardTitle }) {
+                            //                                savedItems.remove(at: index)
+                            //                            }
+                            
+                            myDataController.removeEvent(eventId: eventId) //Removo o evento do CoreData
+                            print("Removi legal aqui o evento no CoreData")
+                            isSaved.toggle()
                         }
-                    }
+                    }, label: {
+                        Text("")
+                        
+                    })
                     .buttonStyle(SaveButton(isSaved: $isSaved))
                     .padding()
                 }
