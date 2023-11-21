@@ -39,6 +39,9 @@ struct ActivitiesView: View {
                 }
                 .frame(maxWidth: .infinity) // Para o ScrollView funcionar na tela toda
             }
+            .refreshable {
+                model.getData()
+            }
             .navigationTitle("Activities")
 //            .searchable(text: $searchTerm)
             .toolbar {
